@@ -8,6 +8,7 @@ public class Floor
     public List<Brep> Columns { get; set; }
     public List<Brep> Slab { get; set; }
     public List<Brep> Ceiling { get; set; }
+    // add beams
 
     public int LevelIndex { get; set; }
 
