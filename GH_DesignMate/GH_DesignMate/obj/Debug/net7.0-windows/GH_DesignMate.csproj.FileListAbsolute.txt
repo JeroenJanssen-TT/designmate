@@ -1,0 +1,15 @@
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\bin\Debug\net7.0-windows\GH_DesignMate.deps.json
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\bin\Debug\net7.0-windows\GH_DesignMate.runtimeconfig.json
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\bin\Debug\net7.0-windows\GH_DesignMate.gha
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\bin\Debug\net7.0-windows\GH_DesignMate.pdb
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.csproj.AssemblyReference.cache
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.AssemblyInfoInputs.cache
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.AssemblyInfo.cs
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.csproj.CoreCompileInputs.cache
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.sourcelink.json
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.gha
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\refint\GH_DesignMate.gha
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.pdb
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\GH_DesignMate.genruntimeconfig.cache
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net7.0-windows\ref\GH_DesignMate.gha

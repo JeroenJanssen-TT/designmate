@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Description of GH_DesignMate")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+d6bf2ed20ff21c21c7b1f4249f17c7326064e099")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+2e734ca6fef6d9911435fb045ee098f8d0de1568")]
 [assembly: System.Reflection.AssemblyProductAttribute("GH_DesignMate")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GH_DesignMate")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

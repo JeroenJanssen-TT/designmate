@@ -1,0 +1,10 @@
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\bin\Debug\net48\GH_DesignMate.gha
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\bin\Debug\net48\GH_DesignMate.pdb
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net48\GH_DesignMate.csproj.AssemblyReference.cache
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net48\GH_DesignMate.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net48\GH_DesignMate.AssemblyInfoInputs.cache
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net48\GH_DesignMate.AssemblyInfo.cs
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net48\GH_DesignMate.csproj.CoreCompileInputs.cache
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net48\GH_DesignMate.sourcelink.json
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net48\GH_DesignMate.gha
+C:\Users\PDUONG\Documents\GitHub\designmate\GH_DesignMate\GH_DesignMate\obj\Debug\net48\GH_DesignMate.pdb
