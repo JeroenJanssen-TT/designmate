@@ -8,11 +8,11 @@ public class Floor
     public List<Brep> Columns { get; set; }
     public List<Brep> Slab { get; set; }
     public List<Brep> Ceiling { get; set; }
-    // add beams
+    public List<Brep> Beams { get; set; }
 
     public int LevelIndex { get; set; }
 
-    public Floor(int index, List<Brep> windows, List<Brep> walls, List<Brep> columns, List<Brep> slab, List<Brep> ceiling)
+    public Floor(int index, List<Brep> windows, List<Brep> walls, List<Brep> columns, List<Brep> slab, List<Brep> ceiling, List<Brep> beams)
     {
         LevelIndex = index;
         Windows = new List<Brep>(windows);
@@ -20,5 +20,6 @@ public class Floor
         Columns = new List<Brep>(columns);
         Slab = new List<Brep>(slab);
         Ceiling = new List<Brep>(ceiling);
+        Beams = new List<Brep>(beams);
     }
 }
