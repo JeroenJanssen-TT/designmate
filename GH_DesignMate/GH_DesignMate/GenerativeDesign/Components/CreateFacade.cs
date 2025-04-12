@@ -36,6 +36,7 @@ namespace GH_DesignMate.GenerativeDesign.Components
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddGenericParameter("Facade", "facade", "List of Facade objects assembled from input Breps", GH_ParamAccess.list);
+            pManager.AddGenericParameter("Load", "load of facade", "Facade load in kN", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -59,6 +60,7 @@ namespace GH_DesignMate.GenerativeDesign.Components
             int numFloors = slabs.Count;
 
             List<Facade> facades = new List<Facade>();
+            List<double> ld = new List<double>();
 
             for (int i = 0; i < numFloors; i++)
             {
@@ -69,12 +71,14 @@ namespace GH_DesignMate.GenerativeDesign.Components
                     new List<Brep> { solids.Count > i ? solids[i] : null },
                     new List<Brep> { windows.Count > i ? windows[i] : null },
                     type);
-                    
 
+
+                ld.Add(fc.Load);
                 facades.Add(fc);
             }
 
             DA.SetDataList(0, facades);
+            DA.SetDataList(1, ld);
 
 
         }
