@@ -40,9 +40,6 @@ namespace GH_DesignMate.GenerativeDesign
 
             for (int i = 0; i < NumFloors; i++)
             {
-                List<Brep> facadePlaceholder = new List<Brep>();
-                foreach (var w in currentFloor.FacadePlaceholder)
-                    facadePlaceholder.Add((Brep)w.Duplicate());
 
                 List<Brep> core = new List<Brep>();
                 foreach (var c in currentFloor.Core)
@@ -62,7 +59,6 @@ namespace GH_DesignMate.GenerativeDesign
 
                 Transform moveUp = Transform.Translation(0, 0, Ftf);
 
-                facadePlaceholder.ForEach(b => b.Transform(moveUp));
                 core.ForEach(b => b.Transform(moveUp));
                 columns.ForEach(b => b.Transform(moveUp));
                 slab.ForEach(b => b.Transform(moveUp));
@@ -77,7 +73,7 @@ namespace GH_DesignMate.GenerativeDesign
                 //    slab.ForEach(b => b.Transform(scale));
                 //}
 
-                Floor newFloor = new Floor(i, facadePlaceholder, columns, slab, beams, core);
+                Floor newFloor = new Floor(i,columns, slab, beams, core);
 
                 // if roog garden just increase the load and change color visually?
                 if (AddRoofGarden && i == NumFloors - 1)

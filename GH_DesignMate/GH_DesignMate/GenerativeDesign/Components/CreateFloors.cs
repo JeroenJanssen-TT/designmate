@@ -16,7 +16,6 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddBrepParameter("FacadePlaceholder", "FacadePlaceholder", "", GH_ParamAccess.list);
             pManager.AddBrepParameter("Core", "Core", "", GH_ParamAccess.list);
             pManager.AddBrepParameter("Columns", "columns", "Column geometry, grouped by floor", GH_ParamAccess.list);
             pManager.AddBrepParameter("Slabs", "slabs", "Slab geometry, grouped by floor", GH_ParamAccess.list);
@@ -30,21 +29,19 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            List<Brep> FacadePlaceholder = new List<Brep>();
             List<Brep> core = new List<Brep>();
             List<Brep> columns = new List<Brep>();
             List<Brep> slabs = new List<Brep>();
             List<Brep> beams = new List<Brep>();
 
-            if (!DA.GetDataList(0, FacadePlaceholder)) return;
-            if (!DA.GetDataList(1, core)) return;
-            if (!DA.GetDataList(2, columns)) return;
-            if (!DA.GetDataList(3, slabs)) return;
-            if (!DA.GetDataList(4, beams)) return;
+            if (!DA.GetDataList(0, core)) return;
+            if (!DA.GetDataList(1, columns)) return;
+            if (!DA.GetDataList(2, slabs)) return;
+            if (!DA.GetDataList(3, beams)) return;
 
 
             List<Floor> floors = new List<Floor>();
-            Floor f = new Floor(0, FacadePlaceholder, columns, slabs, beams, core);
+            Floor f = new Floor(0, columns, slabs, beams, core);
 
 
             DA.SetData(0, f);
