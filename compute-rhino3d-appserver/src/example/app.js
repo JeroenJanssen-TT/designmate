@@ -2,9 +2,9 @@
 let data = {}
 data.definition = 'DesignMate.gh'
 data.inputs = {
-  'Count':document.getElementById('count').valueAsNumber,
-  'Radius':document.getElementById('radius').valueAsNumber,
-  'Length':document.getElementById('length').valueAsNumber
+  // 'Count':document.getElementById('count').valueAsNumber,
+  // 'Radius':document.getElementById('radius').valueAsNumber,
+  // 'Length':document.getElementById('length').valueAsNumber
 }
 
 let _threeMesh, _threeMesh1, _threeMesh2, _threeMesh3, _threeMaterial, _threeMaterial1, _threeMaterial2, _threeMaterial3, rhino
@@ -130,9 +130,9 @@ function onSliderChange () {
 
   // get slider values
   data.inputs = {
-    'Count':document.getElementById('count').valueAsNumber,
-    'Radius':document.getElementById('radius').valueAsNumber,
-    'Length':document.getElementById('length').valueAsNumber
+    // 'Count':document.getElementById('count').valueAsNumber,
+    // 'Radius':document.getElementById('radius').valueAsNumber,
+    // 'Length':document.getElementById('length').valueAsNumber
   }
   compute()
 }
@@ -154,9 +154,9 @@ function init () {
 
   controls = new THREE.OrbitControls( camera, renderer.domElement  )
 
-  camera.position.x = -250
-  camera.position.y = 150
-  camera.position.z = -250
+  camera.position.x = -150
+  camera.position.y = 100
+  camera.position.z = -150
 
   window.addEventListener( 'resize', onWindowResize, false )
 
