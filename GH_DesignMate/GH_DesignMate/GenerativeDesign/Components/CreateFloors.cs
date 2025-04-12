@@ -16,11 +16,10 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            pManager.AddBrepParameter("Windows", "windows", "Window geometry, grouped by floor", GH_ParamAccess.list);
-            pManager.AddBrepParameter("Walls", "walls", "Wall geometry, grouped by floor", GH_ParamAccess.list);
+            pManager.AddBrepParameter("FacadePlaceholder", "FacadePlaceholder", "", GH_ParamAccess.list);
+            pManager.AddBrepParameter("Core", "Core", "", GH_ParamAccess.list);
             pManager.AddBrepParameter("Columns", "columns", "Column geometry, grouped by floor", GH_ParamAccess.list);
             pManager.AddBrepParameter("Slabs", "slabs", "Slab geometry, grouped by floor", GH_ParamAccess.list);
-            pManager.AddBrepParameter("Ceilings", "ceilings", "Ceiling geometry, grouped by floor", GH_ParamAccess.list);
             pManager.AddBrepParameter("Beams", "beams", "Beam geometry, grouped by floor", GH_ParamAccess.list);
         }
 
@@ -31,19 +30,17 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            List<Brep> windows = new List<Brep>();
-            List<Brep> walls = new List<Brep>();
+            List<Brep> FacadePlaceholder = new List<Brep>();
+            List<Brep> core = new List<Brep>();
             List<Brep> columns = new List<Brep>();
             List<Brep> slabs = new List<Brep>();
-            List<Brep> ceilings = new List<Brep>();
             List<Brep> beams = new List<Brep>();
 
-            if (!DA.GetDataList(0, windows)) return;
-            if (!DA.GetDataList(1, walls)) return;
+            if (!DA.GetDataList(0, FacadePlaceholder)) return;
+            if (!DA.GetDataList(1, core)) return;
             if (!DA.GetDataList(2, columns)) return;
             if (!DA.GetDataList(3, slabs)) return;
-            if (!DA.GetDataList(4, ceilings)) return;
-            if (!DA.GetDataList(5, beams)) return;
+            if (!DA.GetDataList(4, beams)) return;
 
             // Determine number of floors by slab count (safest reference)
             int numFloors = slabs.Count;
@@ -56,11 +53,10 @@ namespace GH_DesignMate.GenerativeDesign.Components
                 // Here we assume all lists are in order and equally divided
 
                 Floor f = new Floor(i,
-                    new List<Brep> { windows.Count > i ? windows[i] : null },
-                    new List<Brep> { walls.Count > i ? walls[i] : null },
+                    new List<Brep> { FacadePlaceholder.Count > i ? FacadePlaceholder[i] : null },
+                    new List<Brep> { core.Count > i ? core[i] : null },
                     new List<Brep> { columns.Count > i ? columns[i] : null },
                     new List<Brep> { slabs.Count > i ? slabs[i] : null },
-                    new List<Brep> { ceilings.Count > i ? ceilings[i] : null },
                     new List<Brep> { beams.Count > i ? beams[i] : null });
 
                 floors.Add(f);
