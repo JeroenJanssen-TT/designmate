@@ -10,9 +10,9 @@
             body { margin: 0; }
             canvas { width: 100%; height: 100%; }
             input {width: 90%;}
-            #container {position: relative;}
+            #container {position: relative; margin: 6;}
             #container canvas, #overlay { position: absolute;}
-            #overlay {z-index: 1; width: 100%}
+            #overlay {z-index: 1; width: 15%}
 
             #loader {
                 border: 5px solid #f3f3f3; /* Light grey */
@@ -38,16 +38,39 @@
         <div id="container">
             <div id="overlay">
                 <div>
+                    <label for="title"><h1>DesignMate</h1></label>
+                </div>
+                <div>
+                    <label for="count">Count:</label>
                     <input type="range" id="count" name="count" min="0" max="100" value="100" step="10" onmouseup="onSliderChange()" ontouchend="onSliderChange()">
-                    <label for="count">Count</label>
                 </div>
                 <div>
+                    <label for="radius">Radius:</label>
                     <input type="range" id="radius" name="radius" min="1" max="10.00" value="5" step="1" onmouseup="onSliderChange()" ontouchend="onSliderChange()">
-                    <label for="radius">Radius</label>
                 </div>
                 <div>
+                    <label for="length">Length:</label>
                     <input type="range" id="length" name="length" min="1" max="10.00" value="3" step="1" onmouseup="onSliderChange()" ontouchend="onSliderChange()">
-                    <label for="length">Length</label>
+                </div>
+                <div>
+                    <label for="maxHeight">Maximum Building Height (10-200):</label>
+                    <input type="number" id="maxHeight" name="maxHeight" min="10" max="200" />
+                </div>
+                <div>
+                    <label for="location">Building Location (City):</label>
+                    <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    size="10" />
+                </div>
+                <div>
+                    <label for="typology">Building Typology:</label>
+                    <input list="typologies" id="typology" name="typology" />
+                    <datalist id="typologies">
+                    <option value="Residential"></option>
+                    <option value="Office"></option>
+                    </datalist>
                 </div>
             </div>
 

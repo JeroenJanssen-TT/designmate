@@ -1,13 +1,13 @@
 /* eslint no-undef: "off", no-unused-vars: "off" */
 let data = {}
-data.definition = 'BranchNodeRnd.gh'
+data.definition = 'DesignMate.gh'
 data.inputs = {
   'Count':document.getElementById('count').valueAsNumber,
   'Radius':document.getElementById('radius').valueAsNumber,
   'Length':document.getElementById('length').valueAsNumber
 }
 
-let _threeMesh, _threeMaterial, rhino
+let _threeMesh, _threeMesh1, _threeMesh2, _threeMesh3, _threeMaterial, _threeMaterial1, _threeMaterial2, _threeMaterial3, rhino
 
 rhino3dm().then(async m => {
   console.log('Loaded rhino3dm.')
@@ -50,20 +50,48 @@ async function compute(){
 
     // hide spinner
     document.getElementById('loader').style.display = 'none'
-    console.log(responseJson.values[0].InnerTree['{0}'])
+    console.log(responseJson.values)
     let data = JSON.parse(responseJson.values[0].InnerTree['{0}'][0].data)
     let mesh = rhino.DracoCompression.decompressBase64String(data)
+    let data1 = JSON.parse(responseJson.values[1].InnerTree['{0}'][0].data)
+    let mesh1 = rhino.DracoCompression.decompressBase64String(data1)
+    let data2 = JSON.parse(responseJson.values[2].InnerTree['{0}'][0].data)
+    let mesh2 = rhino.DracoCompression.decompressBase64String(data2)
+    let data3 = JSON.parse(responseJson.values[3].InnerTree['{0}'][0].data)
+    let mesh3 = rhino.DracoCompression.decompressBase64String(data3)
       
     t1 = performance.now()
     const decodeMeshTime = t1 - t0
     t0 = t1
 
+    // slab material
     if (!_threeMaterial) {
-      _threeMaterial = new THREE.MeshNormalMaterial()
+      _threeMaterial = new THREE.MeshBasicMaterial({ color: 0xc0c2d1 })
+    }
+    // column material
+    if (!_threeMaterial1) {
+      _threeMaterial1 = new THREE.MeshBasicMaterial({ color: 0x826c68 })
+    }
+    // vertical circulation material
+    if (!_threeMaterial2) {
+      _threeMaterial2 = new THREE.MeshBasicMaterial({ color: 0xbadbd0 })
+    }
+    // ground mesh material
+    if (!_threeMaterial3) {
+      _threeMaterial3 = new THREE.MeshBasicMaterial({ color: 0xe6f0e9 })
     }
     let threeMesh = meshToThreejs(mesh, _threeMaterial)
     mesh.delete()
-    replaceCurrentMesh(threeMesh)
+
+    let threeMesh1 = meshToThreejs(mesh1, _threeMaterial1)
+    mesh1.delete()
+
+    let threeMesh2 = meshToThreejs(mesh2, _threeMaterial2)
+    mesh2.delete()
+
+    let threeMesh3 = meshToThreejs(mesh3, _threeMaterial3)
+    mesh3.delete()
+    replaceCurrentMesh([threeMesh, threeMesh1, threeMesh2, threeMesh3])
 
     t1 = performance.now()
     const rebuildSceneTime = t1 - t0
@@ -126,7 +154,9 @@ function init () {
 
   controls = new THREE.OrbitControls( camera, renderer.domElement  )
 
-  camera.position.z = 50
+  camera.position.x = -250
+  camera.position.y = 150
+  camera.position.z = -250
 
   window.addEventListener( 'resize', onWindowResize, false )
 
@@ -146,13 +176,34 @@ function onWindowResize() {
   animate()
 }
 
-function replaceCurrentMesh (threeMesh) {
+function replaceCurrentMesh (meshes) {
   if (_threeMesh) {
     scene.remove(_threeMesh)
     _threeMesh.geometry.dispose()
   }
-  _threeMesh = threeMesh
+  _threeMesh = meshes[0]
   scene.add(_threeMesh)
+  
+  if (_threeMesh1) {
+    scene.remove(_threeMesh1)
+    _threeMesh1.geometry.dispose()
+  }
+  _threeMesh1 = meshes[1]
+  scene.add(_threeMesh1)
+  
+  if (_threeMesh2) {
+    scene.remove(_threeMesh2)
+    _threeMesh2.geometry.dispose()
+  }
+  _threeMesh2 = meshes[2]
+  scene.add(_threeMesh2)
+  
+  if (_threeMesh3) {
+    scene.remove(_threeMesh3)
+    _threeMesh3.geometry.dispose()
+  }
+  _threeMesh3 = meshes[3]
+  scene.add(_threeMesh3)
 }
 
 function meshToThreejs (mesh, material) {
