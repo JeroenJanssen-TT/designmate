@@ -37,6 +37,7 @@ namespace GH_DesignMate.GenerativeDesign.Components
         {
             pManager.AddGenericParameter("Facade", "facade", "List of Facade objects assembled from input Breps", GH_ParamAccess.list);
             pManager.AddGenericParameter("Load", "load of facade", "Facade load in kN", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Carbon Footprint", "carbon footprint", "Carbon footprint kg of CO2", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -61,6 +62,7 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
             List<Facade> facades = new List<Facade>();
             List<double> ld = new List<double>();
+            List<double> cf = new List<double>();
 
             for (int i = 0; i < numFloors; i++)
             {
@@ -75,10 +77,12 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
                 ld.Add(fc.Load);
                 facades.Add(fc);
+                cf.Add(fc.CarbonFootprint);
             }
 
             DA.SetDataList(0, facades);
             DA.SetDataList(1, ld);
+            DA.SetDataList(2, cf);
 
 
         }

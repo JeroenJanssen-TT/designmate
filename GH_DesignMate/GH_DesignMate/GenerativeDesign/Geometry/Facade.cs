@@ -16,6 +16,7 @@ namespace GH_DesignMate.GenerativeDesign.Geometry
         public string FacadeType { get; set; }
 
         public double Load {  get; set; }
+        public double CarbonFootprint { get; set; }
 
         public int LevelIndex { get; set; }
 
@@ -35,9 +36,11 @@ namespace GH_DesignMate.GenerativeDesign.Geometry
             Windows = new List<Brep>(windows);
             Solid = new List<Brep>(solid);
             FacadeType = facadetype;
+            Load = 0;
+            CarbonFootprint = 0;
 
-
-            //Get load (kg by m3)
+            //GET LOAD AND CARBON FOOTPRINT
+            //Get load (kN)
 
             double windowdensity = 2500;
             double brickdensity = 1800;
@@ -45,37 +48,56 @@ namespace GH_DesignMate.GenerativeDesign.Geometry
             double aluminumdensity = 2700;
             double averagedensity = 1700;
 
-            Load = 0;
+            //Get CarbonFoorpint kg CO₂e/kg
+            double windowcarbon = 1.3;
+            double brickcarbon = 0.24;
+            double timbercarbon = 0.46;
+            double aluminumcarbon = 2.5;
+            double averagecarbon = 1.4;
 
-            foreach(Brep brep in windows) 
+
+            foreach (Brep brep in windows) 
             {
-                Load += brep.GetVolume() * windowdensity * 0.01;
+                double Vl = brep.GetVolume();
+                double mss = Vl * aluminumdensity;
+                Load += mss * windowdensity * 0.01;
+                CarbonFootprint += mss * windowcarbon;
 
             }
 
             foreach (Brep br in solid)
             {
+                double Vol = br.GetVolume();
                 if (facadetype == "Cladding Metal" || facadetype == "Curtain Wall")
                 {
-                    Load += br.GetVolume() * aluminumdensity * 0.01;
+                    double mass = Vol * aluminumdensity;
+                    Load += mass * 0.01;
+                    CarbonFootprint += mass * aluminumcarbon;
                 }
 
                 else if (facadetype == "Cladding Timber")
                 {
-                    Load += br.GetVolume() * timberdensity * 0.01;
+                    double mass = Vol * timberdensity;
+                    Load += mass * 0.01;
+                    CarbonFootprint += mass * timbercarbon;
                 }
 
                 else if (facadetype == "Bricks")
                 {
-                    Load += br.GetVolume() * brickdensity * 0.01;
+                    double mass = Vol * brickdensity;
+                    Load += mass * 0.01;
+                    CarbonFootprint += mass * brickcarbon;
                 }
 
                 else
                 {
-                    Load += br.GetVolume() * averagedensity* 0.01;
+                    double mass = Vol * averagedensity;
+                    Load += mass* 0.01;
+                    CarbonFootprint += mass * averagecarbon;
                 }
 
             }
+
 
         }
 
