@@ -7,7 +7,9 @@ data.inputs = {
   // 'Length':document.getElementById('length').valueAsNumber
 }
 
-let _threeMesh, _threeMesh1, _threeMesh2, _threeMesh3, _threeMaterial, _threeMaterial1, _threeMaterial2, _threeMaterial3, rhino
+let _threeMesh, _threeMesh1, _threeMesh2, _threeMesh3
+let _threeMaterial, _threeMaterial1, _threeMaterial2, _threeMaterial3
+let rhino
 
 rhino3dm().then(async m => {
   console.log('Loaded rhino3dm.')
@@ -24,6 +26,7 @@ async function compute(){
   let t0 = performance.now()
   const timeComputeStart = t0
 
+  console.log('inputs:')
   console.log(data.inputs)
 
   const request = {
@@ -50,14 +53,15 @@ async function compute(){
 
     // hide spinner
     document.getElementById('loader').style.display = 'none'
-    //console.log(responseJson.values)
+    console.log('data:')
+    console.log(responseJson.values)
     let data = JSON.parse(responseJson.values[0].InnerTree['{0}'][0].data)
     let mesh = rhino.DracoCompression.decompressBase64String(data)
-    let data1 = JSON.parse(responseJson.values[1].InnerTree['{0}'][0].data)
+    let data1 = JSON.parse(responseJson.values[1].InnerTree['{1}'][0].data)
     let mesh1 = rhino.DracoCompression.decompressBase64String(data1)
-    let data2 = JSON.parse(responseJson.values[2].InnerTree['{0}'][0].data)
+    let data2 = JSON.parse(responseJson.values[2].InnerTree['{2}'][0].data)
     let mesh2 = rhino.DracoCompression.decompressBase64String(data2)
-    let data3 = JSON.parse(responseJson.values[3].InnerTree['{0}'][0].data)
+    let data3 = JSON.parse(responseJson.values[3].InnerTree['{3}'][0].data)
     let mesh3 = rhino.DracoCompression.decompressBase64String(data3)
       
     t1 = performance.now()
