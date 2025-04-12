@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "/IBOzySHXIU=",
+  "dgSpecHash": "MvWcM3ocXXc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\JJanssen\\Documents\\GitHub\\designmate\\GH_DesignMate\\GH_DesignMate\\GH_DesignMate.csproj",
+  "projectFilePath": "C:\\Users\\PDUONG\\Documents\\GitHub\\designmate\\GH_DesignMate\\GH_DesignMate\\GH_DesignMate.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\JJanssen\\.nuget\\packages\\grasshopper\\8.0.23304.9001\\grasshopper.8.0.23304.9001.nupkg.sha512",
-    "C:\\Users\\JJanssen\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net48\\1.0.3\\microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512",
-    "C:\\Users\\JJanssen\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
-    "C:\\Users\\JJanssen\\.nuget\\packages\\rhinocommon\\8.0.23304.9001\\rhinocommon.8.0.23304.9001.nupkg.sha512",
-    "C:\\Users\\JJanssen\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512"
+    "C:\\Users\\PDUONG\\.nuget\\packages\\grasshopper\\8.0.23304.9001\\grasshopper.8.0.23304.9001.nupkg.sha512",
+    "C:\\Users\\PDUONG\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net48\\1.0.3\\microsoft.netframework.referenceassemblies.net48.1.0.3.nupkg.sha512",
+    "C:\\Users\\PDUONG\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\PDUONG\\.nuget\\packages\\rhinocommon\\8.0.23304.9001\\rhinocommon.8.0.23304.9001.nupkg.sha512",
+    "C:\\Users\\PDUONG\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }
