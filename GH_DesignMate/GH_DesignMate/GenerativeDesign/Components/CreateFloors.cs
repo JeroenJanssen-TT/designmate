@@ -25,7 +25,7 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
         {
-            pManager.AddGenericParameter("Floors", "floors", "List of Floor objects assembled from input Breps", GH_ParamAccess.list);
+            pManager.AddGenericParameter("Floors", "floors", "List of Floor objects assembled from input Breps", GH_ParamAccess.item);
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -42,27 +42,12 @@ namespace GH_DesignMate.GenerativeDesign.Components
             if (!DA.GetDataList(3, slabs)) return;
             if (!DA.GetDataList(4, beams)) return;
 
-            // Determine number of floors by slab count (safest reference)
-            int numFloors = slabs.Count;
 
             List<Floor> floors = new List<Floor>();
+            Floor f = new Floor(0, FacadePlaceholder, columns, slabs, beams, core);
 
-            for (int i = 0; i < numFloors; i++)
-            {
-                // Optional: filter elements per floor, or assume uniform subdivision
-                // Here we assume all lists are in order and equally divided
 
-                Floor f = new Floor(i,
-                    new List<Brep> { FacadePlaceholder.Count > i ? FacadePlaceholder[i] : null },
-                    new List<Brep> { core.Count > i ? core[i] : null },
-                    new List<Brep> { columns.Count > i ? columns[i] : null },
-                    new List<Brep> { slabs.Count > i ? slabs[i] : null },
-                    new List<Brep> { beams.Count > i ? beams[i] : null });
-
-                floors.Add(f);
-            }
-
-            DA.SetDataList(0, floors);
+            DA.SetData(0, f);
         }
 
         protected override System.Drawing.Bitmap Icon => null;

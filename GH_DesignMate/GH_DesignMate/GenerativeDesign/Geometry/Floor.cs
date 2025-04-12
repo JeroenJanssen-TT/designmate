@@ -18,6 +18,6 @@ public class Floor
         Columns = new List<Brep>(columns);
         Slab = new List<Brep>(slab);
         Beams = new List<Brep>(beams);
-        Core = new List<Brep>();
+        Core = new List<Brep>(cores);
     }
 }

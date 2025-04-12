@@ -76,9 +76,8 @@ namespace GH_DesignMate.GenerativeDesign.Components
             DA.SetDataList(0, allFacadePlaceholder);
             DA.SetDataList(1, allColumns);
             DA.SetDataList(2, allSlabs);
-            DA.SetDataList(3, allCeilings);
-            DA.SetDataList(4, allCores);
-            DA.SetDataList(5, allBeams);
+            DA.SetDataList(3, allCores);
+            DA.SetDataList(4, allBeams);
         }
 
         protected override System.Drawing.Bitmap Icon => null;

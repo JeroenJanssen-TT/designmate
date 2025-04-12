@@ -45,8 +45,8 @@ namespace GH_DesignMate.GenerativeDesign
                     facadePlaceholder.Add((Brep)w.Duplicate());
 
                 List<Brep> core = new List<Brep>();
-                foreach (var wall in currentFloor.Core)
-                    core.Add((Brep)wall.Duplicate());
+                foreach (var c in currentFloor.Core)
+                    core.Add((Brep)c.Duplicate());
 
                 List<Brep> columns = new List<Brep>();
                 foreach (var c in currentFloor.Columns)
@@ -68,16 +68,16 @@ namespace GH_DesignMate.GenerativeDesign
                 slab.ForEach(b => b.Transform(moveUp));
                 beams.ForEach(b => b.Transform(moveUp));
 
-                if (Setback > 0)
-                {
-                    // pick a wall - translate it inward
-                    Point3d centroid = AreaMassProperties.Compute(slab.First()).Centroid;
-                    Transform scale = Transform.Scale(centroid, 1.0 - (Setback * 0.1));
-                    core.ForEach(b => b.Transform(scale));
-                    slab.ForEach(b => b.Transform(scale));
-                }
+                //if (Setback > 0)
+                //{
+                //     pick a wall - translate it inward
+                //    Point3d centroid = AreaMassProperties.Compute(slab.First()).Centroid;
+                //    Transform scale = Transform.Scale(centroid, 1.0 - (Setback * 0.1));
+                //    core.ForEach(b => b.Transform(scale));
+                //    slab.ForEach(b => b.Transform(scale));
+                //}
 
-                Floor newFloor = new Floor(i, facadePlaceholder, core, columns, slab, beams);
+                Floor newFloor = new Floor(i, facadePlaceholder, columns, slab, beams, core);
 
                 // if roog garden just increase the load and change color visually?
                 if (AddRoofGarden && i == NumFloors - 1)
