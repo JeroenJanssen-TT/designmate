@@ -23,6 +23,7 @@ namespace GH_DesignMate.GenerativeDesign.Components
             pManager.AddBooleanParameter("Add Roof Garden", "roofGarden", "Whether to include a roof garden", GH_ParamAccess.item);
             pManager.AddGenericParameter("Floor List", "floors", "List of preconfigured floor objects", GH_ParamAccess.list);
             pManager.AddNumberParameter("FtF", "ftf", "Floor to floor height", GH_ParamAccess.item);
+            pManager.AddNumberParameter("maxHeight", "maxHeight", "maxHeight", GH_ParamAccess.item);
         }
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
@@ -30,7 +31,6 @@ namespace GH_DesignMate.GenerativeDesign.Components
             pManager.AddBrepParameter("Walls", "walls", "Wall geometry from all floors", GH_ParamAccess.list);
             pManager.AddBrepParameter("Columns", "columns", "Column geometry from all floors", GH_ParamAccess.list);
             pManager.AddBrepParameter("Slabs", "slabs", "Slab geometry from all floors", GH_ParamAccess.list);
-            pManager.AddBrepParameter("Ceilings", "ceilings", "Ceiling geometry from all floors", GH_ParamAccess.list);
             pManager.AddBrepParameter("Windows", "windows", "Window geometry from all floors", GH_ParamAccess.list);
             pManager.AddBrepParameter("Beams", "beams", "Beam geometry from all floors", GH_ParamAccess.list); // NEW
         }
@@ -43,6 +43,7 @@ namespace GH_DesignMate.GenerativeDesign.Components
             bool addRoofGarden = false;
             List<Floor> inputFloors = new List<Floor>();
             double ftf = 0.0;
+            double maxHeight = 0.0;
 
             if (!DA.GetData(0, ref numFloors)) return;
             if (!DA.GetData(1, ref setback)) return;
@@ -50,8 +51,9 @@ namespace GH_DesignMate.GenerativeDesign.Components
             if (!DA.GetData(3, ref addRoofGarden)) return;
             if (!DA.GetDataList(4, inputFloors)) return;
             if (!DA.GetData(5, ref ftf)) return;
+            if (!DA.GetData(6, ref maxHeight)) return;
 
-            BuildingModel model = new BuildingModel(numFloors, setback, facadeType, addRoofGarden, inputFloors, ftf);
+            BuildingModel model = new BuildingModel(numFloors, setback, facadeType, addRoofGarden, inputFloors, ftf, maxHeight);
 
             List<Floor> generatedFloors = model.Generate();
 
@@ -67,7 +69,6 @@ namespace GH_DesignMate.GenerativeDesign.Components
                 allWalls.AddRange(f.Walls);
                 allColumns.AddRange(f.Columns);
                 allSlabs.AddRange(f.Slab);
-                allCeilings.AddRange(f.Ceiling);
                 allWindows.AddRange(f.Windows);
                 allBeams.AddRange(f.Beams);
             }

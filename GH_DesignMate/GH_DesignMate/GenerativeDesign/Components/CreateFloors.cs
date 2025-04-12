@@ -60,7 +60,6 @@ namespace GH_DesignMate.GenerativeDesign.Components
                     new List<Brep> { walls.Count > i ? walls[i] : null },
                     new List<Brep> { columns.Count > i ? columns[i] : null },
                     new List<Brep> { slabs.Count > i ? slabs[i] : null },
-                    new List<Brep> { ceilings.Count > i ? ceilings[i] : null },
                     new List<Brep> { beams.Count > i ? beams[i] : null });
 
                 floors.Add(f);
