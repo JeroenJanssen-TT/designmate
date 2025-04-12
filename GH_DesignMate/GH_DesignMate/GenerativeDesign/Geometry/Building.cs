@@ -8,7 +8,7 @@ namespace GH_DesignMate.GenerativeDesign.Geometry
 {
     public class Building
     {
-        List<Floor> Floors { get; set; }
+        public List<Floor> Floors { get; set; }
         public Building(List<Floor> floors)
         {
             Floors = floors;
