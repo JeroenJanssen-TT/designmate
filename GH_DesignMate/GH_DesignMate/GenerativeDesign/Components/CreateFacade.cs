@@ -69,10 +69,11 @@ namespace GH_DesignMate.GenerativeDesign.Components
                 // Optional: filter elements per floor, or assume uniform subdivision
                 // Here we assume all lists are in order and equally divided
 
-                Facade fc = new Facade(i,
-                    new List<Brep> { solids.Count > i ? solids[i] : null },
-                    new List<Brep> { windows.Count > i ? windows[i] : null },
-                    type);
+                List<Brep> currentSolid = solids.Count > i ? new List<Brep> { solids[i] } : new List<Brep>();
+                List<Brep> currentWindows = windows.Count > i ? new List<Brep> { windows[i] } : new List<Brep>();
+
+                Facade fc = new Facade(i, currentWindows, currentSolid, type);
+                fc.GenerateFacade(i, currentSolid, currentWindows, type);
 
 
                 ld.Add(fc.Load);
