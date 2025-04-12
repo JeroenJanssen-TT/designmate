@@ -50,7 +50,7 @@ async function compute(){
 
     // hide spinner
     document.getElementById('loader').style.display = 'none'
-    console.log(responseJson.values)
+    //console.log(responseJson.values)
     let data = JSON.parse(responseJson.values[0].InnerTree['{0}'][0].data)
     let mesh = rhino.DracoCompression.decompressBase64String(data)
     let data1 = JSON.parse(responseJson.values[1].InnerTree['{0}'][0].data)
@@ -139,11 +139,15 @@ function onSliderChange () {
 
 // BOILERPLATE //
 
-var scene, camera, renderer, controls
+var scene, scene_small, camera, renderer, renderer_small, controls
 
 function init () {
   scene = new THREE.Scene()
   scene.background = new THREE.Color(1,1,1)
+
+  scene_small = new THREE.Scene()
+  scene_small.background = new THREE.Color(1,1,1)
+
   camera = new THREE.PerspectiveCamera( 45, window.innerWidth/window.innerHeight, 1, 1000 )
 
   renderer = new THREE.WebGLRenderer({antialias: true})
@@ -151,6 +155,12 @@ function init () {
   renderer.setSize( window.innerWidth, window.innerHeight )
   let canvas = document.getElementById('canvas')
   canvas.appendChild( renderer.domElement )
+
+  renderer_small = new THREE.WebGLRenderer({antialias: true})
+  renderer_small.setPixelRatio( window.devicePixelRatio )
+  //renderer_small.setSize( window.innerWidth, window.innerHeight )
+  let canvas_small = document.getElementById('canvas_small0')
+  canvas_small.append(renderer_small.domElement)
 
   controls = new THREE.OrbitControls( camera, renderer.domElement  )
 
@@ -167,6 +177,7 @@ var animate = function () {
   requestAnimationFrame( animate )
   controls.update()
   renderer.render( scene, camera )
+  renderer_small.render(scene_small, camera)
 }
   
 function onWindowResize() {
@@ -192,11 +203,11 @@ function replaceCurrentMesh (meshes) {
   scene.add(_threeMesh1)
   
   if (_threeMesh2) {
-    scene.remove(_threeMesh2)
+    scene_small.remove(_threeMesh2)
     _threeMesh2.geometry.dispose()
   }
   _threeMesh2 = meshes[2]
-  scene.add(_threeMesh2)
+  scene_small.add(_threeMesh2)
   
   if (_threeMesh3) {
     scene.remove(_threeMesh3)
