@@ -40,13 +40,13 @@ namespace GH_DesignMate.GenerativeDesign
 
             for (int i = 0; i < NumFloors; i++)
             {
-                List<Brep> windows = new List<Brep>();
-                foreach (var w in currentFloor.Windows)
-                    windows.Add((Brep)w.Duplicate());
+                List<Brep> facadePlaceholder = new List<Brep>();
+                foreach (var w in currentFloor.FacadePlaceholder)
+                    facadePlaceholder.Add((Brep)w.Duplicate());
 
-                List<Brep> walls = new List<Brep>();
-                foreach (var wall in currentFloor.Walls)
-                    walls.Add((Brep)wall.Duplicate());
+                List<Brep> core = new List<Brep>();
+                foreach (var wall in currentFloor.Core)
+                    core.Add((Brep)wall.Duplicate());
 
                 List<Brep> columns = new List<Brep>();
                 foreach (var c in currentFloor.Columns)
@@ -62,8 +62,8 @@ namespace GH_DesignMate.GenerativeDesign
 
                 Transform moveUp = Transform.Translation(0, 0, Ftf);
 
-                windows.ForEach(b => b.Transform(moveUp));
-                walls.ForEach(b => b.Transform(moveUp));
+                facadePlaceholder.ForEach(b => b.Transform(moveUp));
+                core.ForEach(b => b.Transform(moveUp));
                 columns.ForEach(b => b.Transform(moveUp));
                 slab.ForEach(b => b.Transform(moveUp));
                 beams.ForEach(b => b.Transform(moveUp));
@@ -73,11 +73,11 @@ namespace GH_DesignMate.GenerativeDesign
                     // pick a wall - translate it inward
                     Point3d centroid = AreaMassProperties.Compute(slab.First()).Centroid;
                     Transform scale = Transform.Scale(centroid, 1.0 - (Setback * 0.1));
-                    walls.ForEach(b => b.Transform(scale));
+                    core.ForEach(b => b.Transform(scale));
                     slab.ForEach(b => b.Transform(scale));
                 }
 
-                Floor newFloor = new Floor(i, windows, walls, columns, slab, beams);
+                Floor newFloor = new Floor(i, facadePlaceholder, core, columns, slab, beams);
 
                 // if roog garden just increase the load and change color visually?
                 if (AddRoofGarden && i == NumFloors - 1)

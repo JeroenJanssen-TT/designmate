@@ -28,11 +28,11 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
         {
-            pManager.AddBrepParameter("Walls", "walls", "Wall geometry from all floors", GH_ParamAccess.list);
-            pManager.AddBrepParameter("Columns", "columns", "Column geometry from all floors", GH_ParamAccess.list);
-            pManager.AddBrepParameter("Slabs", "slabs", "Slab geometry from all floors", GH_ParamAccess.list);
-            pManager.AddBrepParameter("Windows", "windows", "Window geometry from all floors", GH_ParamAccess.list);
-            pManager.AddBrepParameter("Beams", "beams", "Beam geometry from all floors", GH_ParamAccess.list); // NEW
+            pManager.AddBrepParameter("FacadePlaceholder", "FacadePlaceholder", "", GH_ParamAccess.list);
+            pManager.AddBrepParameter("Columns", "columns", "", GH_ParamAccess.list);
+            pManager.AddBrepParameter("Slabs", "slabs", "", GH_ParamAccess.list);
+            pManager.AddBrepParameter("Core", "Core", "", GH_ParamAccess.list);
+            pManager.AddBrepParameter("Beams", "beams", "", GH_ParamAccess.list); // NEW
         }
 
         protected override void SolveInstance(IGH_DataAccess DA)
@@ -57,27 +57,27 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
             List<Floor> generatedFloors = model.Generate();
 
-            List<Brep> allWalls = new List<Brep>();
+            List<Brep> allFacadePlaceholder = new List<Brep>();
             List<Brep> allColumns = new List<Brep>();
             List<Brep> allSlabs = new List<Brep>();
             List<Brep> allCeilings = new List<Brep>();
-            List<Brep> allWindows = new List<Brep>();
+            List<Brep> allCores = new List<Brep>();
             List<Brep> allBeams = new List<Brep>();
 
             foreach (Floor f in generatedFloors)
             {
-                allWalls.AddRange(f.Walls);
+                allFacadePlaceholder.AddRange(f.FacadePlaceholder);
                 allColumns.AddRange(f.Columns);
                 allSlabs.AddRange(f.Slab);
-                allWindows.AddRange(f.Windows);
+                allCores.AddRange(f.Core);
                 allBeams.AddRange(f.Beams);
             }
 
-            DA.SetDataList(0, allWalls);
+            DA.SetDataList(0, allFacadePlaceholder);
             DA.SetDataList(1, allColumns);
             DA.SetDataList(2, allSlabs);
             DA.SetDataList(3, allCeilings);
-            DA.SetDataList(4, allWindows);
+            DA.SetDataList(4, allCores);
             DA.SetDataList(5, allBeams);
         }
 
