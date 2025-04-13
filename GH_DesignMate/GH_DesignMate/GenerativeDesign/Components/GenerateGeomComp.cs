@@ -28,7 +28,6 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
         protected override void RegisterOutputParams(GH_OutputParamManager pManager)
         {
-            pManager.AddBrepParameter("FacadePlaceholder", "FacadePlaceholder", "", GH_ParamAccess.list);
             pManager.AddBrepParameter("Columns", "columns", "", GH_ParamAccess.list);
             pManager.AddBrepParameter("Slabs", "slabs", "", GH_ParamAccess.list);
             pManager.AddBrepParameter("Core", "Core", "", GH_ParamAccess.list);
@@ -66,19 +65,16 @@ namespace GH_DesignMate.GenerativeDesign.Components
 
             foreach (Floor f in generatedFloors)
             {
-                allFacadePlaceholder.AddRange(f.FacadePlaceholder);
                 allColumns.AddRange(f.Columns);
                 allSlabs.AddRange(f.Slab);
                 allCores.AddRange(f.Core);
                 allBeams.AddRange(f.Beams);
             }
 
-            DA.SetDataList(0, allFacadePlaceholder);
-            DA.SetDataList(1, allColumns);
-            DA.SetDataList(2, allSlabs);
-            DA.SetDataList(3, allCeilings);
-            DA.SetDataList(4, allCores);
-            DA.SetDataList(5, allBeams);
+            DA.SetDataList(0, allColumns);
+            DA.SetDataList(1, allSlabs);
+            DA.SetDataList(2, allCores);
+            DA.SetDataList(3, allBeams);
         }
 
         protected override System.Drawing.Bitmap Icon => null;
