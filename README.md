@@ -1,6 +1,6 @@
 # ReDesignMate
 
-**ReDesignMate** is a Grasshopper plugin for generative design and performance analysis of building renovations. It leverages Rhino's Hops and a local compute server to enable web-based interaction with parametric building models.
+**ReDesignMate** is a Grasshopper plugin for generating structurally realistic design scenarion and performance analysis of building renovations. It uses Rhino's Hops and a local compute server to enable web-based interaction with parametric building models.
 
 ## 🔧 Features
 
